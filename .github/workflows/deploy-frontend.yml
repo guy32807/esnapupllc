@@ -7,8 +7,6 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 jobs:
   build-and-deploy:
@@ -33,7 +31,9 @@ jobs:
         run: npm run build
         env:
           CI: false
-          PUBLIC_URL: /esnapupllc
+          
+      - name: Add .nojekyll file
+        run: touch ./esnapup-ui/build/.nojekyll
           
       - name: Deploy to GitHub Pages 🚀
         uses: JamesIves/github-pages-deploy-action@v4
