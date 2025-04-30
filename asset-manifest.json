@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "https://guy32807.github.io/esnapupllc/static/css/main.8144b8fb.css",
+    "main.js": "https://guy32807.github.io/esnapupllc/static/js/main.895528d5.js",
+    "index.html": "https://guy32807.github.io/esnapupllc/index.html",
+    "main.8144b8fb.css.map": "https://guy32807.github.io/esnapupllc/static/css/main.8144b8fb.css.map",
+    "main.895528d5.js.map": "https://guy32807.github.io/esnapupllc/static/js/main.895528d5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8144b8fb.css",
+    "static/js/main.895528d5.js"
+  ]
+}
