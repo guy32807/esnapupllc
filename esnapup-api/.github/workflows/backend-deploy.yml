@@ -1,0 +1,78 @@
+name: Deploy Backend
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'esnapup-api/**'
+  workflow_dispatch:
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./esnapup-api
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+        cache: 'npm'
+        cache-dependency-path: ./esnapup-api/package-lock.json
+
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Setup Cosmos DB connection
+      run: |
+        echo "Setting up Cosmos DB environment variables"
+        # The following variables will be used in your application
+        echo "COSMOSDB_ENDPOINT=${{ secrets.COSMOSDB_ENDPOINT }}" >> $GITHUB_ENV
+        echo "COSMOSDB_KEY=${{ secrets.COSMOSDB_KEY }}" >> $GITHUB_ENV
+        echo "COSMOSDB_DATABASE=${{ secrets.COSMOSDB_DATABASE }}" >> $GITHUB_ENV
+        echo "COSMOSDB_CONTAINER=${{ secrets.COSMOSDB_CONTAINER }}" >> $GITHUB_ENV
+
+    - name: Set Heroku Config Vars
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const { execSync } = require('child_process');
+          
+          // Install Heroku CLI if not already installed
+          try {
+            execSync('heroku --version');
+          } catch (error) {
+            console.log('Installing Heroku CLI...');
+            execSync('curl https://cli-assets.heroku.com/install.sh | sh');
+          }
+          
+          // Login to Heroku
+          execSync(`echo ${{ secrets.HEROKU_API_KEY }} | HEROKU_API_KEY=${{ secrets.HEROKU_API_KEY }} heroku auth:token`);
+          
+          // Set Cosmos DB config vars
+          console.log('Setting Cosmos DB config vars on Heroku...');
+          execSync(`HEROKU_API_KEY=${{ secrets.HEROKU_API_KEY }} heroku config:set \
+            COSMOSDB_ENDPOINT=${{ secrets.COSMOSDB_ENDPOINT }} \
+            COSMOSDB_KEY=${{ secrets.COSMOSDB_KEY }} \
+            COSMOSDB_DATABASE=${{ secrets.COSMOSDB_DATABASE }} \
+            COSMOSDB_CONTAINER=${{ secrets.COSMOSDB_CONTAINER }} \
+            --app esnapup-api`);
+          
+          console.log('Heroku config vars set successfully');
+
+    - name: Deploy to Heroku
+      uses: akhileshns/heroku-deploy@v3.12.14
+      with:
+        heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+        heroku_app_name: esnapup-api
+        heroku_email: ${{ secrets.HEROKU_EMAIL }}
+        appdir: ./esnapup-api
+        envVars: |
+          COSMOSDB_ENDPOINT
+          COSMOSDB_KEY
+          COSMOSDB_DATABASE
+          COSMOSDB_CONTAINER

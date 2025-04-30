@@ -1,0 +1,24 @@
+.header {
+    background-color: #343a40;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+/* NavLink automatically applies the 'active' class to active routes */
+.nav-link.active {
+  font-weight: bold;
+  color: #1976d2; /* Material UI's primary.main default color */
+  position: relative;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #1976d2;
+}

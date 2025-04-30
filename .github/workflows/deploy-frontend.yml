@@ -1,0 +1,42 @@
+name: Deploy Frontend to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'esnapup-ui/**'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: 'esnapup-ui/package-lock.json'
+          
+      - name: Install Dependencies
+        working-directory: ./esnapup-ui
+        run: npm ci
+        
+      - name: Build React App
+        working-directory: ./esnapup-ui
+        run: |
+          npm run build
+          # Fix for React Router in GitHub Pages
+          cp build/index.html build/404.html
+        env:
+          CI: false
+          REACT_APP_API_URL: https://esnapup-api.herokuapp.com
+          
+      - name: Deploy to GitHub Pages 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: esnapup-ui/build
+          branch: gh-pages
+          clean: true

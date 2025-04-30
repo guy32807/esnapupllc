@@ -1,0 +1,21 @@
+name: Deploy Backend to Heroku
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'esnapup-api/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        
+      - name: Deploy to Heroku
+        uses: akhileshns/heroku-deploy@v3.12.13
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: "esnapup-api"
+          heroku_email: "adubuisson@comcast.net"
+          appdir: "esnapup-api"
