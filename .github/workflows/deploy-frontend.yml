@@ -2,9 +2,18 @@ name: Deploy Frontend to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
-    paths:
-      - 'esnapup-ui/**'
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write  # This is the critical change - 'write' instead of 'read'
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   build-and-deploy:
@@ -12,7 +21,7 @@ jobs:
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
-
+        
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
@@ -26,13 +35,9 @@ jobs:
         
       - name: Build React App
         working-directory: ./esnapup-ui
-        run: |
-          npm run build
-          # Fix for React Router in GitHub Pages
-          cp build/index.html build/404.html
+        run: npm run build:gh-pages
         env:
           CI: false
-          REACT_APP_API_URL: https://esnapup-api.herokuapp.com
           
       - name: Deploy to GitHub Pages 🚀
         uses: JamesIves/github-pages-deploy-action@v4

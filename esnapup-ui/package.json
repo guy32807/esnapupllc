@@ -7,6 +7,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build && node src/utils/generateSitemap.js",
+    "build:gh-pages": "PUBLIC_URL=https://guy32807.github.io/esnapupllc react-scripts build && node src/utils/generateSitemap.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "generate-sitemap": "node src/utils/generateSitemap.js"
