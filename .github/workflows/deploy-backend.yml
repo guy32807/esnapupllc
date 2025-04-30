@@ -2,16 +2,18 @@ name: Deploy Backend to Heroku
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
     paths:
       - 'esnapup-api/**'
+  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        
+
       - name: Deploy to Heroku
         uses: akhileshns/heroku-deploy@v3.12.13
         with:
