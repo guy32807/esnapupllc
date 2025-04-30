@@ -2,15 +2,14 @@
   "name": "esnapup-ui",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://guy32807.github.io/esnapupllc",
   "description": "ESnapup Software Company Website",
   "main": "src/index.tsx",
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && node src/utils/generateSitemap.js",
-    "build:gh-pages": "PUBLIC_URL=https://guy32807.github.io/esnapupllc react-scripts build && node src/utils/generateSitemap.js",
+    "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "generate-sitemap": "node src/utils/generateSitemap.js"
+    "eject": "react-scripts eject"
   },
   "keywords": [
     "software",
@@ -22,7 +21,6 @@
   ],
   "author": "ESnapup Team",
   "license": "MIT",
-  "homepage": "https://guy32807.github.io/esnapupllc",
   "dependencies": {
     "@chatscope/chat-ui-kit-react": "^2.0.3",
     "@chatscope/chat-ui-kit-styles": "^1.4.0",

@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write  # This is the critical change - 'write' instead of 'read'
+  contents: write
   pages: write
   id-token: write
 
@@ -35,9 +35,10 @@ jobs:
         
       - name: Build React App
         working-directory: ./esnapup-ui
-        run: npm run build:gh-pages
+        run: npm run build
         env:
           CI: false
+          PUBLIC_URL: /esnapupllc
           
       - name: Deploy to GitHub Pages 🚀
         uses: JamesIves/github-pages-deploy-action@v4
