@@ -79,6 +79,16 @@
       "categories": ["web", "restaurant", "business"],
       "liveUrl": "https://guy32807.github.io/restaurant-finder/",
       "githubUrl": "https://github.com/guy32807/restaurant-finder"
+    },
+    {
+      "id": "tech-explorer",
+      "title": "Tech Explorer",
+      "description": "An interactive platform that helps users explore emerging technologies, understand their applications, and stay updated with the latest tech trends and innovations.",
+      "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "technologies": ["React", "TypeScript", "Material UI", "Interactive Charts", "Responsive Design"],
+      "categories": ["web", "business", "mobile"],
+      "liveUrl": "https://guy32807.github.io/tech-explorer/",
+      "githubUrl": "https://github.com/guy32807/tech-explorer"
     }
   ]
 }
