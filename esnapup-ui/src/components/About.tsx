@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box, Container, Typography, Grid as MuiGrid, Paper, Avatar } from '@mui/material';
+import { Box, Container, Typography, Grid as MuiGrid, Paper, Avatar, Card, CardContent, Button } from '@mui/material';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import SEO from './SEO';
 
 // Create a type-safe Grid component
@@ -77,53 +78,6 @@ const About: React.FC = () => {
             </Grid>
           </Grid>
           
-          {/* <Box sx={{ mt: 8 }}>
-            <Typography variant="h4" align="center" gutterBottom>
-              Our Team
-            </Typography>
-            <Typography variant="body1" align="center" paragraph sx={{ mb: 4 }}>
-              ESnapup is powered by a diverse team of passionate technologists committed to excellence.
-            </Typography>
-            
-            <Grid container spacing={4} justifyContent="center">
-              <Grid item xs={12} sm={6} md={4}>
-                <Box sx={{ 
-                  display: 'flex', 
-                  flexDirection: 'column', 
-                  alignItems: 'center'
-                }}>
-                  <Avatar sx={{ width: 150, height: 150, mb: 2 }}>JD</Avatar>
-                  <Typography variant="h6">Jane Doe</Typography>
-                  <Typography variant="body2" color="textSecondary">Founder & CEO</Typography>
-                </Box>
-              </Grid>
-              
-              <Grid item xs={12} sm={6} md={4}>
-                <Box sx={{ 
-                  display: 'flex', 
-                  flexDirection: 'column', 
-                  alignItems: 'center'
-                }}>
-                  <Avatar sx={{ width: 150, height: 150, mb: 2 }}>JS</Avatar>
-                  <Typography variant="h6">John Smith</Typography>
-                  <Typography variant="body2" color="textSecondary">CTO</Typography>
-                </Box>
-              </Grid>
-              
-              <Grid item xs={12} sm={6} md={4}>
-                <Box sx={{ 
-                  display: 'flex', 
-                  flexDirection: 'column', 
-                  alignItems: 'center'
-                }}>
-                  <Avatar sx={{ width: 150, height: 150, mb: 2 }}>MP</Avatar>
-                  <Typography variant="h6">Maria Parker</Typography>
-                  <Typography variant="body2" color="textSecondary">Lead Developer</Typography>
-                </Box>
-              </Grid>
-            </Grid>
-          </Box> */}
-          
           <Box sx={{ mt: 8 }}>
             <Typography variant="h4" align="center" gutterBottom>
               Our History
@@ -134,6 +88,38 @@ const About: React.FC = () => {
             <Typography variant="body1" paragraph>
               Throughout our journey, we've remained committed to our core values while continuously adapting to the ever-changing technology landscape. Our experience has taught us that successful software is not just about code—it's about understanding people, processes, and business goals.
             </Typography>
+          </Box>
+
+          <Box sx={{ mt: 8, mb: 4 }}>
+            <Typography variant="h4" component="h2" gutterBottom sx={{ textAlign: 'center' }}>
+              Certifications & Credentials
+            </Typography>
+            <Typography variant="body1" paragraph sx={{ textAlign: 'center', mb: 4 }}>
+              Our team maintains industry-recognized certifications that validate our expertise and commitment to quality.
+            </Typography>
+            
+            <Box sx={{ 
+              display: 'flex', 
+              flexWrap: 'wrap',
+              justifyContent: 'center',
+              gap: 3,
+              my: 4 
+            }}>
+              {/* Card section is intentionally empty now, ready for future certifications */}
+            </Box>
+            
+            <Box sx={{ textAlign: 'center', mt: 3 }}>
+              <Button 
+                variant="contained" 
+                color="primary"
+                endIcon={<ArrowForwardIcon />}
+                href="https://www.credly.com/users/auguste-dubuisson"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Our Certifications on Credly
+              </Button>
+            </Box>
           </Box>
         </Container>
       </Box>
