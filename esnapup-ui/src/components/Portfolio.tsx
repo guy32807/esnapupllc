@@ -28,6 +28,16 @@ interface Project {
 const projects: Project[] = [
   // Working websites first
   {
+    id: 'tea-delights',
+    title: 'Tea Delights',
+    description: 'An artisanal tea shop website offering premium loose-leaf teas, brewing accessories, and educational content about tea varieties and preparation techniques.',
+    image: 'https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    technologies: ['React', 'JavaScript', 'CSS', 'Responsive Design', 'GitHub Pages', 'E-commerce'],
+    categories: ['web', 'business'],
+    liveUrl: 'https://guy32807.github.io/tea-delights/',
+    githubUrl: 'https://github.com/guy32807/tea-delights'
+  },
+  {
     id: 'performance-surge',
     title: 'Performance Surge',
     description: 'A comprehensive platform for tracking and optimizing business performance metrics with real-time analytics dashboards and performance improvement tools.',
