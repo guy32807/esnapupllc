@@ -8,96 +8,12 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import LaunchIcon from '@mui/icons-material/Launch';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import SEO from './SEO';
+import { Project, ProjectCategory } from '../types/project';
+import projectsData from '../data/projects.json';
+import { getAllProjects, getProjectsByCategory, getPaginatedProjects } from '../services/projectService';
 
-// Define project category type
-type ProjectCategory = 'all' | 'web' | 'mobile' | 'business' | 'restaurant';
-
-// Define project interface with category field
-interface Project {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  technologies: string[];
-  categories: ProjectCategory[];
-  liveUrl?: string;
-  githubUrl?: string;
-}
-
-// Original portfolio projects with categories
-const projects: Project[] = [
-  // Working websites first
-  {
-    id: 'tea-delights',
-    title: 'Tea Delights',
-    description: 'An artisanal tea shop website offering premium loose-leaf teas, brewing accessories, and educational content about tea varieties and preparation techniques.',
-    image: 'https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-    technologies: ['React', 'JavaScript', 'CSS', 'Responsive Design', 'GitHub Pages', 'E-commerce'],
-    categories: ['web', 'business'],
-    liveUrl: 'https://guy32807.github.io/tea-delights/',
-    githubUrl: 'https://github.com/guy32807/tea-delights'
-  },
-  {
-    id: 'performance-surge',
-    title: 'Performance Surge',
-    description: 'A comprehensive platform for tracking and optimizing business performance metrics with real-time analytics dashboards and performance improvement tools.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-    technologies: ['React', 'JavaScript', 'Material UI', 'Chart.js', 'GitHub Pages', 'Responsive Design'],
-    categories: ['web', 'business'],
-    liveUrl: 'https://guy32807.github.io/performance-surge/',
-    githubUrl: 'https://github.com/guy32807/performance-surge'
-  },
-  {
-    id: 'webhosting',
-    title: 'Web Hosting Services Portal',
-    description: 'A modern platform for comparing and purchasing web hosting services with domain management, server configuration and customer support features.',
-    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-    technologies: ['React', 'JavaScript', 'CSS', 'HTML', 'GitHub Pages', 'Responsive Design'],
-    categories: ['web', 'business'],
-    liveUrl: 'https://guy32807.github.io/webhosting/',
-    githubUrl: 'https://github.com/guy32807/webhosting'
-  },
-  {
-    id: 'travel-recommendation',
-    title: 'Travel Recommendation App',
-    description: 'An intelligent travel recommendation system that suggests destinations based on user preferences, interests, and budget constraints.',
-    image: 'https://images.unsplash.com/photo-1503220317375-aaad61436b1b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-    technologies: ['JavaScript', 'React', 'Node.js', 'MongoDB', 'Machine Learning'],
-    categories: ['web', 'mobile'],
-    liveUrl: 'https://guy32807.github.io/travel_recommentation/',
-    githubUrl: 'https://github.com/guy32807/travel_recommentation',
-  },
-  {
-    id: 'press-release',
-    title: 'Press Release Generator',
-    description: 'A tool that helps businesses create professional press releases with customizable templates and distribution options to increase media visibility.',
-    image: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-    technologies: ['React', 'JavaScript', 'CSS', 'HTML', 'GitHub Pages'],
-    categories: ['web', 'business'],
-    liveUrl: 'https://guy32807.github.io/press-release/',
-    githubUrl: 'https://github.com/guy32807/press-release'
-  },
-  {
-    id: 'healthcare-census',
-    title: 'Healthcare Census Dashboard',
-    description: 'An interactive dashboard for visualizing and analyzing healthcare census data, providing insights into patient demographics, facility utilization, and healthcare trends.',
-    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-    technologies: ['React', 'D3.js', 'Python', 'Flask', 'SQL', 'Healthcare APIs'],
-    categories: ['web', 'business'],
-    liveUrl: 'https://guy32807.github.io/healthcare_census/',
-    githubUrl: 'https://github.com/guy32807/healthcare_census'
-  },
-  {
-    id: 'restaurant-finder',
-    title: 'Local Restaurant Finder',
-    description: 'A platform for discovering local restaurants with reviews, menus, and reservation capabilities. Helps small businesses gain visibility.',
-    image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-    technologies: ['React', 'Firebase', 'Google Maps API', 'Stripe', 'PWA'],
-    categories: ['web', 'restaurant', 'business'],
-    liveUrl: 'https://guy32807.github.io/restaurant-finder/',
-    githubUrl: 'https://github.com/guy32807/restaurant-finder'
-  }
-];
+// Import projects from JSON file
+const projects: Project[] = projectsData.projects as Project[];
 
 const Portfolio: React.FC = () => {
   // State for the active category filter
@@ -123,9 +39,7 @@ const Portfolio: React.FC = () => {
 
     // Short timeout to simulate data loading and help debug render issues
     const timer = setTimeout(() => {
-      const filtered = projects.filter(
-        project => activeCategory === 'all' || project.categories.includes(activeCategory)
-      );
+      const filtered = getProjectsByCategory(activeCategory);
       setDisplayedProjects(filtered);
       setLoading(false);
       
@@ -138,9 +52,7 @@ const Portfolio: React.FC = () => {
 
   // Get current page projects
   const getCurrentPageProjects = () => {
-    const startIndex = (page - 1) * projectsPerPage;
-    const endIndex = startIndex + projectsPerPage;
-    return displayedProjects.slice(startIndex, endIndex);
+    return getPaginatedProjects(displayedProjects, page, projectsPerPage);
   };
 
   // Total pages calculation
