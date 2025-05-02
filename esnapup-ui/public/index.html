@@ -37,5 +37,22 @@
     </script>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <script>
+      (function() {
+        // Check for redirect in sessionStorage
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        // If there was a redirect, handle it
+        if (redirect && redirect !== location.href) {
+          var cleanRedirect = redirect.replace(location.origin, '');
+          if (cleanRedirect.startsWith('/esnapupllc')) {
+            cleanRedirect = cleanRedirect.replace('/esnapupllc', '');
+          }
+          if (cleanRedirect !== '/' && cleanRedirect !== '') {
+            history.replaceState(null, null, cleanRedirect);
+          }
+        }
+      })();
+    </script>
 </body>
 </html>

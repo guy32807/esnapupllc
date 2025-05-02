@@ -1,143 +1,129 @@
 import React from 'react';
-import { Box, Container, Typography, Link, Stack, IconButton } from '@mui/material';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import { 
+  Box, 
+  Container, 
+  Typography, 
+  Link as MuiLink, 
+  IconButton,
+  Divider,
+  Paper,
+  Stack
+} from '@mui/material';
+import { Link } from 'react-router-dom';
+import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
-import CodeIcon from '@mui/icons-material/Code'; // For Stack Overflow
-import NewReleasesIcon from '@mui/icons-material/NewReleases'; // For ProductHunt
-import CollectionsBookmarkIcon from '@mui/icons-material/CollectionsBookmark'; // For Dev.to
-import BrushIcon from '@mui/icons-material/Brush'; // For Behance/Dribbble
-import BusinessIcon from '@mui/icons-material/Business'; // For Clutch/G2
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import InstagramIcon from '@mui/icons-material/Instagram';
 
 const Footer: React.FC = () => {
-  const socialIconStyle = { color: 'inherit' };
-
+  const currentYear = new Date().getFullYear();
+  
   return (
-    <Box component="footer" sx={{ bgcolor: 'primary.main', color: 'white', py: 6, mt: 'auto' }}>
+    <Paper component="footer" square elevation={3} sx={{ mt: 'auto', py: 4, backgroundColor: '#1976d2', color: 'white' }}>
       <Container maxWidth="lg">
-        <Stack 
-          direction={{ xs: 'column', md: 'row' }} 
-          spacing={4} 
-          justifyContent="space-between"
-        >
-          <Box>
+        {/* Replace Grid with Box/flexbox layout */}
+        <Box sx={{ 
+          display: 'flex', 
+          flexDirection: { xs: 'column', md: 'row' },
+          flexWrap: 'wrap',
+          gap: 4
+        }}>
+          {/* Company Info */}
+          <Box sx={{ flex: { md: '1 1 25%' }, minWidth: { md: '25%' } }}>
             <Typography variant="h6" gutterBottom>
               ESnapup
             </Typography>
-            <Typography variant="body2">
-              Professional web development solutions for businesses of all sizes.
+            <Typography variant="body2" sx={{ mb: 2 }}>
+              Innovative software solutions for businesses of all sizes. We create custom applications, websites, and digital experiences that help your organization thrive.
             </Typography>
+            <Box sx={{ display: 'flex', gap: 1 }}>
+              <IconButton color="inherit" aria-label="Facebook">
+                <FacebookIcon />
+              </IconButton>
+              <IconButton color="inherit" aria-label="Twitter">
+                <TwitterIcon />
+              </IconButton>
+              <IconButton color="inherit" aria-label="LinkedIn">
+                <LinkedInIcon />
+              </IconButton>
+              <IconButton color="inherit" aria-label="Instagram">
+                <InstagramIcon />
+              </IconButton>
+            </Box>
           </Box>
           
-          <Box>
+          {/* Links */}
+          <Box sx={{ flex: { md: '1 1 16.66%' }, minWidth: { md: '16.66%' } }}>
             <Typography variant="h6" gutterBottom>
-              Quick Links
+              Links
             </Typography>
             <Stack spacing={1}>
-              <Link href="/" color="inherit" underline="hover">
+              <MuiLink component={Link} to="/" color="inherit" underline="hover">
                 Home
-              </Link>
-              <Link href="/about" color="inherit" underline="hover">
+              </MuiLink>
+              <MuiLink component={Link} to="/about" color="inherit" underline="hover">
                 About
-              </Link>
-              <Link href="/portfolio" color="inherit" underline="hover">
+              </MuiLink>
+              <MuiLink component={Link} to="/services" color="inherit" underline="hover">
+                Services
+              </MuiLink>
+              <MuiLink component={Link} to="/portfolio" color="inherit" underline="hover">
                 Portfolio
-              </Link>
-              <Link href="/contact" color="inherit" underline="hover">
+              </MuiLink>
+              <MuiLink component={Link} to="/contact" color="inherit" underline="hover">
                 Contact
-              </Link>
+              </MuiLink>
             </Stack>
           </Box>
           
-          <Box>
+          {/* Services */}
+          <Box sx={{ flex: { md: '1 1 25%' }, minWidth: { md: '25%' } }}>
             <Typography variant="h6" gutterBottom>
-              Connect With Us
+              Services
             </Typography>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, mb: 4 }}>
-              <Typography variant="subtitle2" align="center" color="textSecondary">
-                Connect With Us
-              </Typography>
-              
-              {/* Primary social networks */}
-              <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
-                <Link href="https://twitter.com/esnapup" color="inherit" aria-label="Twitter">
-                  <TwitterIcon />
-                </Link>
-                <Link href="https://linkedin.com/company/esnapup" color="inherit" aria-label="LinkedIn">
-                  <LinkedInIcon />
-                </Link>
-              </Box>
-              
-              {/* Developer platforms */}
-              <Typography variant="caption" align="center" color="textSecondary" sx={{ mt: 2 }}>
-                Developer Resources
-              </Typography>
-              <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
-                <IconButton 
-                  href="https://stackoverflow.com/c/esnapup" 
-                  target="_blank"
-                  aria-label="Stack Overflow"
-                  sx={socialIconStyle}
-                >
-                  <CodeIcon />
-                </IconButton>
-                <IconButton 
-                  href="https://github.com/esnapup" 
-                  target="_blank"
-                  aria-label="GitHub"
-                  sx={socialIconStyle}
-                >
-                  <GitHubIcon />
-                </IconButton>
-                <IconButton 
-                  href="https://dev.to/esnapup" 
-                  target="_blank"
-                  aria-label="Dev.to"
-                  sx={socialIconStyle}
-                >
-                  <CollectionsBookmarkIcon />
-                </IconButton>
-              </Box>
-              
-              {/* Business platforms */}
-              <Typography variant="caption" align="center" color="textSecondary" sx={{ mt: 2 }}>
-                Business Profiles
-              </Typography>
-              <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
-                <IconButton 
-                  href="https://clutch.co/profile/esnapup" 
-                  target="_blank"
-                  aria-label="Clutch.co"
-                  sx={socialIconStyle}
-                >
-                  <BusinessIcon />
-                </IconButton>
-                <IconButton 
-                  href="https://www.behance.net/esnapup" 
-                  target="_blank"
-                  aria-label="Behance"
-                  sx={socialIconStyle}
-                >
-                  <BrushIcon />
-                </IconButton>
-                <IconButton 
-                  href="https://www.producthunt.com/@esnapup" 
-                  target="_blank"
-                  aria-label="Product Hunt"
-                  sx={socialIconStyle}
-                >
-                  <NewReleasesIcon />
-                </IconButton>
-              </Box>
-            </Box>
+            <Stack spacing={1}>
+              <MuiLink component={Link} to="/services#web-development" color="inherit" underline="hover">
+                Web Development
+              </MuiLink>
+              <MuiLink component={Link} to="/services#mobile-apps" color="inherit" underline="hover">
+                Mobile Applications
+              </MuiLink>
+              <MuiLink component={Link} to="/services#custom-software" color="inherit" underline="hover">
+                Custom Software
+              </MuiLink>
+              <MuiLink component={Link} to="/services#digital-marketing" color="inherit" underline="hover">
+                Digital Marketing
+              </MuiLink>
+              <MuiLink component={Link} to="/services#seo" color="inherit" underline="hover">
+                SEO Services
+              </MuiLink>
+            </Stack>
           </Box>
-        </Stack>
+          
+          {/* Contact */}
+          <Box sx={{ flex: { md: '1 1 25%' }, minWidth: { md: '25%' } }}>
+            <Typography variant="h6" gutterBottom>
+              Contact Us
+            </Typography>
+            <Typography variant="body2" sx={{ mb: 1 }}>
+              San Francisco, CA 94105
+            </Typography>
+            <Typography variant="body2" sx={{ mb: 1 }}>
+              Email: info@esnapup.com
+            </Typography>
+            <Typography variant="body2" sx={{ mb: 1 }}>
+              Phone: (555) 123-4567
+            </Typography>
+          </Box>
+        </Box>
         
-        <Typography variant="body2" align="center" sx={{ mt: 4 }}>
-          © {new Date().getFullYear()} ESnapup. All rights reserved.
+        <Divider sx={{ my: 3, borderColor: 'rgba(255,255,255,0.2)' }} />
+        
+        <Typography variant="body2" align="center">
+          © {currentYear} ESnapup. All rights reserved.
         </Typography>
       </Container>
-    </Box>
+    </Paper>
   );
 };
 

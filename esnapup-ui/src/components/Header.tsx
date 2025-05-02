@@ -1,133 +1,155 @@
 import React, { useState } from 'react';
 import { 
-  AppBar, Toolbar, Typography, Button, IconButton, Box, 
-  Drawer, List, ListItem, ListItemText, ListItemButton, Container, useMediaQuery, 
-  useTheme 
+  AppBar, 
+  Box, 
+  Toolbar, 
+  IconButton, 
+  Typography, 
+  Menu, 
+  Container, 
+  Avatar, 
+  Button, 
+  Tooltip, 
+  MenuItem,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
+  useMediaQuery,
+  useTheme
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import CloseIcon from '@mui/icons-material/Close';
-import { NavLink, NavLinkProps } from 'react-router-dom';
-import './Header.css';
+import { Link } from 'react-router-dom';
 
-// Extend the NavLink props with our own props for TypeScript
-interface CustomLinkProps extends NavLinkProps {
-  isActive?: boolean;
-}
+const pages = [
+  { title: 'Home', path: '/' },
+  { title: 'About', path: '/about' },
+  { title: 'Services', path: '/services' },
+  { title: 'Portfolio', path: '/portfolio' },
+  { title: 'Contact', path: '/contact' }
+];
 
-const Header = () => {
-  const [drawerOpen, setDrawerOpen] = useState(false);
+const Header: React.FC = () => {
+  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-  
-  // Navigation links
-  const navLinks = [
-    { title: 'Home', path: '/' },
-    { title: 'About', path: '/about' },
-    { title: 'Portfolio', path: '/portfolio' },
-    { title: 'Services', path: '/services' },
-    { title: 'Contact', path: '/contact' }
-  ];
-  
+
+  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElNav(event.currentTarget);
+  };
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+
   const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-    if (
-      event.type === 'keydown' &&
-      ((event as React.KeyboardEvent).key === 'Tab' || (event as React.KeyboardEvent).key === 'Shift')
-    ) {
+    if (event.type === 'keydown' && 
+        ((event as React.KeyboardEvent).key === 'Tab' || 
+         (event as React.KeyboardEvent).key === 'Shift')) {
       return;
     }
-    setDrawerOpen(open);
+    setMobileOpen(open);
   };
-  
+
   return (
-    <AppBar position="sticky" color="default" elevation={1} sx={{ bgcolor: 'background.paper' }}>
-      <Container maxWidth="lg">
-        <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
-          <Typography 
-            variant="h6" 
-            component={NavLink} 
+    <AppBar position="static">
+      <Container maxWidth="xl">
+        <Toolbar disableGutters>
+          {/* Logo for desktop */}
+          <Typography
+            variant="h6"
+            noWrap
+            component={Link}
             to="/"
-            style={{ textDecoration: 'none', color: 'inherit', fontWeight: 'bold' }}
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
           >
-            <Box component="span" sx={{ color: 'primary.main' }}>E</Box>Snapup
+            ESnapup
           </Typography>
-          
-          {isMobile ? (
-            <IconButton 
-              edge="end" 
-              color="inherit" 
-              aria-label="menu" 
+
+          {/* Mobile menu button */}
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+            <IconButton
+              size="large"
+              aria-label="menu"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
               onClick={toggleDrawer(true)}
+              color="inherit"
             >
               <MenuIcon />
             </IconButton>
-          ) : (
-            <Box component="nav" sx={{ display: 'flex', gap: 3 }}>
-              {navLinks.map((link) => (
-                <Button
-                  key={link.title}
-                  component={NavLink}
-                  to={link.path}
-                  className="nav-link"
-                  sx={{
-                    textDecoration: 'none',
-                    color: 'inherit',
-                    padding: '6px 0',
-                    transition: 'all 0.3s ease',
-                    position: 'relative',
-                    '&:hover': {
-                      color: theme.palette.primary.main
-                    },
-                    '&.active': {
-                      fontWeight: 'bold',
-                      color: theme.palette.primary.main,
-                      borderBottom: `2px solid ${theme.palette.primary.main}`
-                    }
-                  }}
-                >
-                  {link.title}
-                </Button>
-              ))}
-            </Box>
-          )}
-          
-          <Drawer
-            anchor="right"
-            open={drawerOpen}
-            onClose={toggleDrawer(false)}
-          >
-            <Box
-              sx={{ width: 250, pt: 2, height: '100%' }}
-              role="presentation"
-              onClick={toggleDrawer(false)}
-              onKeyDown={toggleDrawer(false)}
+            <Drawer
+              anchor="left"
+              open={mobileOpen}
+              onClose={toggleDrawer(false)}
             >
-              <Box sx={{ display: 'flex', justifyContent: 'flex-end', px: 2 }}>
-                <IconButton color="inherit" edge="end" aria-label="close">
-                  <CloseIcon />
-                </IconButton>
-              </Box>
-              <List>
-                {navLinks.map((link) => (
-                  <ListItem key={link.title} disablePadding>
-                    <ListItemButton
-                      component={NavLink}
-                      to={link.path}
-                      className="nav-link"
+              <Box
+                sx={{ width: 250 }}
+                role="presentation"
+                onClick={toggleDrawer(false)}
+                onKeyDown={toggleDrawer(false)}
+              >
+                <List>
+                  {pages.map((page) => (
+                    <ListItem 
+                      key={page.title} 
+                      component={Link} 
+                      to={page.path} 
                       sx={{ 
-                        px: 3,
-                        '&.active': {
-                          color: theme.palette.primary.main,
-                          backgroundColor: 'rgba(25, 118, 210, 0.08)'
-                        }
+                        textDecoration: 'none', 
+                        color: 'inherit' 
                       }}
                     >
-                      <ListItemText primary={link.title} />
-                    </ListItemButton>
-                  </ListItem>
-                ))}
-              </List>
-            </Box>
-          </Drawer>
+                      <ListItemText primary={page.title} />
+                    </ListItem>
+                  ))}
+                </List>
+              </Box>
+            </Drawer>
+          </Box>
+
+          {/* Logo for mobile */}
+          <Typography
+            variant="h5"
+            noWrap
+            component={Link}
+            to="/"
+            sx={{
+              mr: 2,
+              display: { xs: 'flex', md: 'none' },
+              flexGrow: 1,
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+            ESnapup
+          </Typography>
+
+          {/* Desktop menu */}
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+            {pages.map((page) => (
+              <Button
+                key={page.title}
+                component={Link}
+                to={page.path}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                {page.title}
+              </Button>
+            ))}
+          </Box>
         </Toolbar>
       </Container>
     </AppBar>

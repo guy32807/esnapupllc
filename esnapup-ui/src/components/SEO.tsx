@@ -1,55 +1,52 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
-export interface SEOProps {
+interface SEOProps {
   title: string;
   description: string;
   keywords?: string | string[];
   canonicalUrl?: string;
   schema?: any;
-  structuredData?: any; // Added this alternative property name
-  // Social media props
+  structuredData?: any[];
   ogTitle?: string;
   ogDescription?: string;
   ogImage?: string;
-  twitterCard?: 'summary' | 'summary_large_image' | 'app' | 'player';
+  twitterCard?: string;
   twitterSite?: string;
 }
 
 const SEO: React.FC<SEOProps> = ({
   title,
   description,
-  keywords,
-  canonicalUrl,
-  schema,
-  structuredData, // Added this parameter
-  // Social media props
+  keywords = '',
+  canonicalUrl = '',
+  schema = null,
+  structuredData = [],
   ogTitle,
   ogDescription,
   ogImage,
-  twitterCard = 'summary',
-  twitterSite,
+  twitterCard = 'summary_large_image',
+  twitterSite = '@esnapup'
 }) => {
-  // Convert keywords array to comma-separated string if it's an array
+  // Convert keywords to string if it's an array
   const keywordsString = Array.isArray(keywords) ? keywords.join(', ') : keywords;
-  
-  // Use either schema or structuredData, with schema taking precedence if both are provided
-  const jsonLdData = schema || structuredData;
-  
+
   return (
     <Helmet>
       {/* Basic metadata */}
       <title>{title}</title>
       <meta name="description" content={description} />
       {keywordsString && <meta name="keywords" content={keywordsString} />}
+      
+      {/* Canonical URL */}
       {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
       
-      {/* OpenGraph / Facebook */}
+      {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />
       <meta property="og:title" content={ogTitle || title} />
       <meta property="og:description" content={ogDescription || description} />
-      {ogImage && <meta property="og:image" content={ogImage} />}
       {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+      {ogImage && <meta property="og:image" content={ogImage} />}
       
       {/* Twitter */}
       <meta name="twitter:card" content={twitterCard} />
@@ -58,12 +55,21 @@ const SEO: React.FC<SEOProps> = ({
       <meta name="twitter:description" content={ogDescription || description} />
       {ogImage && <meta name="twitter:image" content={ogImage} />}
       
-      {/* JSON-LD structured data */}
-      {jsonLdData && (
+      {/* Schema.org JSON-LD */}
+      {schema && (
         <script type="application/ld+json">
-          {JSON.stringify(Array.isArray(jsonLdData) ? jsonLdData : jsonLdData)}
+          {JSON.stringify(schema)}
         </script>
       )}
+      
+      {/* Multiple structured data entries */}
+      {structuredData && structuredData.length > 0 && 
+        structuredData.map((data, index) => (
+          <script key={index} type="application/ld+json">
+            {JSON.stringify(data)}
+          </script>
+        ))
+      }
     </Helmet>
   );
 };
