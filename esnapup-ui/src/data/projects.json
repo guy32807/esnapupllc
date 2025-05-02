@@ -24,7 +24,7 @@
       "id": "airport-parking",
       "title": "Airport Parking Finder",
       "description": "A user-friendly application for locating and booking airport parking spaces at competitive rates, with options for short-term, long-term, and valet parking services.",
-      "image": "https://images.unsplash.com/photo-1613339284406-e903f0c88be8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "image": "https://images.unsplash.com/photo-1530521954074-e64f6810b32d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
       "technologies": ["React", "JavaScript", "Geolocation API", "Payment Processing", "Responsive Design"],
       "categories": ["web", "business", "mobile"],
       "liveUrl": "https://guy32807.github.io/airport-parking/",
@@ -94,11 +94,21 @@
       "id": "fragrance-guide",
       "title": "Fragrance Guide",
       "description": "A comprehensive resource for fragrance enthusiasts, featuring perfume categories, scent profiles, buying guides, and personalized recommendations for finding the perfect signature scent.",
-      "image": "https://images.unsplash.com/photo-1615736981422-0546802c34e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "image": "https://images.unsplash.com/photo-1557943819-b09ae5a1d6eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
       "technologies": ["React", "JavaScript", "CSS3", "Responsive Design", "SEO Optimization"],
       "categories": ["web", "business"],
       "liveUrl": "https://guy32807.github.io/fragrance-guide/",
       "githubUrl": "https://github.com/guy32807/fragrance-guide"
+    },
+    {
+      "id": "tech-gadget-pro",
+      "title": "Tech Gadget Pro",
+      "description": "A cutting-edge e-commerce platform specializing in the latest tech gadgets and accessories, featuring product comparisons, expert reviews, and personalized recommendations for tech enthusiasts.",
+      "image": "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "technologies": ["React", "JavaScript", "Material UI", "E-commerce", "Responsive Design", "Product Filtering"],
+      "categories": ["web", "business", "mobile"],
+      "liveUrl": "https://guy32807.github.io/tech-gadget-pro/",
+      "githubUrl": "https://github.com/guy32807/tech-gadget-pro"
     }
   ]
 }
