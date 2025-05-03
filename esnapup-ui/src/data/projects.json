@@ -119,6 +119,16 @@
       "categories": ["web", "business", "mobile"],
       "liveUrl": "https://guy32807.github.io/tech-gadget-pro/",
       "githubUrl": "https://github.com/guy32807/tech-gadget-pro"
+    },
+    {
+      "id": "home-design-finder",
+      "title": "Home Design Finder",
+      "description": "An interactive platform that helps homeowners discover interior design styles, browse design inspirations, and connect with professional designers for their home renovation projects.",
+      "image": "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "technologies": ["React", "JavaScript", "Material UI", "Responsive Design", "Design Filter Algorithm", "Favorite Collections"],
+      "categories": ["web", "business", "mobile"],
+      "liveUrl": "https://guy32807.github.io/home-design-finder/",
+      "githubUrl": "https://github.com/guy32807/home-design-finder"
     }
   ]
 }
