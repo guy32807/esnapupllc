@@ -129,6 +129,16 @@
       "categories": ["web", "business", "mobile"],
       "liveUrl": "https://guy32807.github.io/home-design-finder/",
       "githubUrl": "https://github.com/guy32807/home-design-finder"
+    },
+    {
+      "id": "euro-road-trips",
+      "title": "Euro Road Trips",
+      "description": "A comprehensive guide to the most scenic and adventurous road trip routes across Europe, featuring interactive maps, suggested itineraries, accommodation recommendations, and local attractions.",
+      "image": "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "technologies": ["React", "JavaScript", "Google Maps API", "Responsive Design", "Route Planning", "Travel Tips"],
+      "categories": ["web", "travel", "mobile"],
+      "liveUrl": "https://guy32807.github.io/euro-road-trips/",
+      "githubUrl": "https://github.com/guy32807/euro-road-trips"
     }
   ]
 }
