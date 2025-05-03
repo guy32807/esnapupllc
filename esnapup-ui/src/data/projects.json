@@ -51,14 +51,14 @@
       "githubUrl": "https://github.com/guy32807/webhosting"
     },
     {
-      "id": "travel-recommendation",
+      "id": "travel-recommender",
       "title": "Travel Recommendation App",
       "description": "An intelligent travel recommendation system that suggests destinations based on user preferences, interests, and budget constraints.",
       "image": "https://images.unsplash.com/photo-1503220317375-aaad61436b1b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
       "technologies": ["JavaScript", "React", "Node.js", "MongoDB", "Machine Learning"],
       "categories": ["web", "mobile"],
-      "liveUrl": "https://guy32807.github.io/travel_recommentation/",
-      "githubUrl": "https://github.com/guy32807/travel_recommentation"
+      "liveUrl": "https://guy32807.github.io/travel-recommender/#/",
+      "githubUrl": "https://github.com/guy32807/travel-recommender"
     },
     {
       "id": "press-release",
