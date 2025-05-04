@@ -119,12 +119,10 @@ const HomePage: React.FC = () => {
           "web development", 
           "software development", 
           "mobile apps",
-          "full stack development",
-          "frontend development",
-          "backend services",
-          "enterprise applications"
+          "digital solutions",
+          "ESnapup"
         ]}
-        canonicalUrl="/"
+        canonicalUrl="/"  // This will be converted to https://esnapup.com/
         structuredData={[
           getOrganizationSchema(),
           getWebsiteSchema()

@@ -15,6 +15,15 @@ interface SEOProps {
   twitterSite?: string;
 }
 
+// Helper to get the proper domain for SEO purposes
+const getFullDomainUrl = (path: string) => {
+  // If it's already a full URL, return it
+  if (path.startsWith('http')) return path;
+  
+  // Always use esnapup.com for SEO purposes
+  return `https://esnapup.com${path.startsWith('/') ? path : `/${path}`}`;
+};
+
 const SEO: React.FC<SEOProps> = ({
   title,
   description,
@@ -30,6 +39,9 @@ const SEO: React.FC<SEOProps> = ({
 }) => {
   // Convert keywords to string if it's an array
   const keywordsString = Array.isArray(keywords) ? keywords.join(', ') : keywords;
+  
+  // Get full domain URL for canonical and social tags
+  const fullCanonicalUrl = canonicalUrl ? getFullDomainUrl(canonicalUrl) : '';
 
   return (
     <Helmet>
@@ -38,14 +50,14 @@ const SEO: React.FC<SEOProps> = ({
       <meta name="description" content={description} />
       {keywordsString && <meta name="keywords" content={keywordsString} />}
       
-      {/* Canonical URL */}
-      {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+      {/* Canonical URL - point to esnapup.com */}
+      {fullCanonicalUrl && <link rel="canonical" href={fullCanonicalUrl} />}
       
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />
       <meta property="og:title" content={ogTitle || title} />
       <meta property="og:description" content={ogDescription || description} />
-      {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+      {fullCanonicalUrl && <meta property="og:url" content={fullCanonicalUrl} />}
       {ogImage && <meta property="og:image" content={ogImage} />}
       
       {/* Twitter */}
@@ -64,11 +76,18 @@ const SEO: React.FC<SEOProps> = ({
       
       {/* Multiple structured data entries */}
       {structuredData && structuredData.length > 0 && 
-        structuredData.map((data, index) => (
-          <script key={index} type="application/ld+json">
-            {JSON.stringify(data)}
-          </script>
-        ))
+        structuredData.map((data, index) => {
+          // Update any URLs in structured data to use esnapup.com
+          let updatedData = { ...data };
+          if (updatedData.url && !updatedData.url.includes('http')) {
+            updatedData.url = getFullDomainUrl(updatedData.url);
+          }
+          return (
+            <script key={index} type="application/ld+json">
+              {JSON.stringify(updatedData)}
+            </script>
+          );
+        })
       }
     </Helmet>
   );
