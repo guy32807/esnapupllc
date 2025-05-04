@@ -8,12 +8,12 @@
   <meta name="author" content="ESnapup Team">
   <meta property="og:title" content="ESnapup - Innovative Software Solutions">
   <meta property="og:description" content="We help businesses transform their ideas into powerful digital solutions.">
-  <meta property="og:image" content="/hero-image.png">
+  <meta property="og:image" content="https://www.esnapup.com/hero-image.png">
   <meta property="og:url" content="https://www.esnapup.com">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="ESnapup - Innovative Software Solutions">
   <meta name="twitter:description" content="We help businesses transform their ideas into powerful digital solutions.">
-  <meta name="twitter:image" content="/hero-image.png">
+  <meta name="twitter:image" content="https://www.esnapup.com/hero-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
@@ -53,6 +53,28 @@
           }
         }
       })();
+    </script>
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      // MIT License
+      // https://github.com/rafgraph/spa-github-pages
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          var searchParams = new URLSearchParams(decoded.slice(1));
+          
+          if (searchParams.has('p')) {
+            var cleanPath = searchParams.get('p');
+            window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + cleanPath +
+              (searchParams.has('q') ? '?' + searchParams.get('q') : '') +
+              l.hash
+            );
+          }
+        }
+      }(window.location))
     </script>
 </body>
 </html>

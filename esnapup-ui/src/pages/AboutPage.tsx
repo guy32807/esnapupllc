@@ -13,10 +13,11 @@ const AboutPage: React.FC = () => {
           'about ESnapup', 
           'web development team', 
           'software engineers Chicago',
-          'tech company values',
-          'digital solutions team'
+          'IT consulting company',
+          'tech startup story',
+          'software development mission'
         ]}
-        canonicalUrl="https://esnapup.com/about"
+        canonicalUrl="/about"
         structuredData={[getOrganizationSchema()]}
       />
       <About />

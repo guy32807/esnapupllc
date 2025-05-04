@@ -1,9 +1,9 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import Layout from './components/Layout';
 
-// Import pages, not components
+// Import pages
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
@@ -11,15 +11,30 @@ import PortfolioPage from './pages/PortfolioPage';
 import ContactPage from './pages/ContactPage';
 import NotFoundPage from './pages/NotFoundPage';
 
-// Only use basename in production and when not on localhost
-const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-const isProduction = process.env.NODE_ENV === 'production';
-const baseUrl = (isProduction && !isLocalhost) ? '/esnapupllc' : '';
+// Get the correct basename based on the environment
+const getBasename = () => {
+  const hostname = window.location.hostname;
+  
+  // If running on esnapup.com domain, don't use a basename
+  if (hostname === 'esnapup.com' || hostname === 'www.esnapup.com') {
+    return '';
+  }
+  
+  // If running on GitHub Pages, use the repo name as basename
+  if (hostname.includes('github.io')) {
+    return '/esnapupllc';
+  }
+  
+  // For local development
+  return '/esnapupllc';
+};
 
 function App() {
+  const basename = getBasename();
+  
   return (
     <HelmetProvider>
-      <BrowserRouter basename={baseUrl}>
+      <BrowserRouter basename={basename}>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
@@ -28,7 +43,7 @@ function App() {
             <Route path="portfolio" element={<PortfolioPage />} />
             <Route path="contact" element={<ContactPage />} />
             
-            {/* Redirect any non-matching routes to home */}
+            {/* Redirect any non-matching routes to the not found page */}
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>

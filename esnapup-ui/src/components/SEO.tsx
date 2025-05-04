@@ -20,8 +20,20 @@ const getFullDomainUrl = (path: string) => {
   // If it's already a full URL, return it
   if (path.startsWith('http')) return path;
   
-  // Always use esnapup.com for SEO purposes
-  return `https://esnapup.com${path.startsWith('/') ? path : `/${path}`}`;
+  const hostname = window.location.hostname;
+  
+  // If running on esnapup.com domain, use that
+  if (hostname === 'esnapup.com' || hostname === 'www.esnapup.com') {
+    return `https://www.esnapup.com${path.startsWith('/') ? path : `/${path}`}`;
+  }
+  
+  // For GitHub Pages or local development
+  if (hostname.includes('github.io')) {
+    return `https://guy32807.github.io/esnapupllc${path.startsWith('/') ? path : `/${path}`}`;
+  }
+  
+  // Default for local development
+  return `${window.location.origin}/esnapupllc${path.startsWith('/') ? path : `/${path}`}`;
 };
 
 const SEO: React.FC<SEOProps> = ({

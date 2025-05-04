@@ -1,128 +1,170 @@
 import React from 'react';
-import { Box, Container, Typography, Grid as MuiGrid, Paper, Avatar, Card, CardContent, Button } from '@mui/material';
+import { Box, Typography, Button, Container, Grid as MuiGrid } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import SEO from './SEO';
+import { Link } from 'react-router-dom';
 
 // Create a type-safe Grid component
 const Grid = MuiGrid as any;
 
 const About: React.FC = () => {
-  // Your schema for the about page
-  const aboutSchema = {
-    "@context": "https://schema.org",
-    "@type": "AboutPage",
-    "name": "About ESnapup",
-    "description": "Learn about our mission, values, and team."
-  };
-
   return (
     <>
-      <SEO 
-        title="About Us | ESnapup"
-        description="Learn more about ESnapup, our mission, values, and team."
-        keywords="about esnapup, software development company, tech team, company mission"
-        canonicalUrl="https://www.esnapup.com/about"
-        schema={aboutSchema}
+      <SEO
+        title="About ESnapup - Our Expert Web Development Team"
+        description="Learn about ESnapup's mission, our team of expert developers, and our approach to creating high-quality web and mobile applications that drive business success."
+        keywords={[
+          'about ESnapup', 
+          'web development team', 
+          'software engineers',
+          'tech company values',
+          'digital solutions team'
+        ]}
+        canonicalUrl="/about"
       />
       
-      <Box sx={{ py: 8 }}>
-        <Container>
-          <Typography variant="h2" component="h1" align="center" gutterBottom>
+      <Container>
+        <Box sx={{ py: 8 }}>
+          <Typography 
+            variant="h1"
+            sx={{ 
+              fontSize: { xs: '2.5rem', md: '3.5rem' },
+              fontWeight: 700,
+              textAlign: 'center',
+              mb: 4
+            }}
+          >
             About ESnapup
           </Typography>
           
-          <Box sx={{ my: 4 }}>
-            <Typography variant="h4" gutterBottom>
-              Our Mission
-            </Typography>
-            <Typography variant="body1" paragraph>
-              At ESnapup, our mission is to empower businesses with innovative digital solutions that drive growth and success. We combine technical expertise with creative thinking to deliver software that solves real-world problems.
-            </Typography>
-          </Box>
-          
-          <Grid container spacing={4} sx={{ my: 6 }}>
+          <Grid container spacing={4}>
             <Grid item xs={12} md={6}>
-              <Paper elevation={3} sx={{ p: 4, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <Typography variant="h4" gutterBottom>
-                  Our Values
+              <Box>
+                <Typography 
+                  variant="h2" 
+                  sx={{ 
+                    fontSize: { xs: '1.75rem', md: '2.25rem' },
+                    fontWeight: 600,
+                    mb: 2
+                  }}
+                >
+                  Our Mission
                 </Typography>
-                <Box component="ul" sx={{ pl: 2 }}>
-                  <Typography component="li" variant="body1" paragraph>
-                    <strong>Excellence:</strong> We strive for the highest quality in everything we do
-                  </Typography>
-                  <Typography component="li" variant="body1" paragraph>
-                    <strong>Innovation:</strong> We constantly explore new technologies and approaches
-                  </Typography>
-                  <Typography component="li" variant="body1" paragraph>
-                    <strong>Integrity:</strong> We maintain ethical standards and transparency
-                  </Typography>
-                  <Typography component="li" variant="body1" paragraph>
-                    <strong>Collaboration:</strong> We work as true partners with our clients
-                  </Typography>
-                </Box>
-              </Paper>
+                <Typography paragraph>
+                  At ESnapup, we believe that technology should be accessible, intuitive, and transformative. Our mission is to create digital solutions that not only meet our clients' immediate needs but also position them for long-term success in an increasingly digital world.
+                </Typography>
+                <Typography paragraph>
+                  Founded in 2023, our team brings together expertise in development, design, and business strategy to deliver results that exceed expectations.
+                </Typography>
+              </Box>
             </Grid>
             
             <Grid item xs={12} md={6}>
-              <Paper elevation={3} sx={{ p: 4, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <Typography variant="h4" gutterBottom>
+              <Box>
+                <Typography 
+                  variant="h2" 
+                  sx={{ 
+                    fontSize: { xs: '1.75rem', md: '2.25rem' },
+                    fontWeight: 600,
+                    mb: 2
+                  }}
+                >
                   Our Approach
                 </Typography>
-                <Typography variant="body1" paragraph>
-                  We believe in a collaborative approach to software development. By working closely with our clients throughout the entire process, we ensure that the final product not only meets but exceeds expectations.
+                <Typography paragraph>
+                  We take a collaborative, client-centered approach to every project. By deeply understanding your business goals, target audience, and competitive landscape, we create customized solutions that deliver measurable results.
                 </Typography>
-                <Typography variant="body1" paragraph>
-                  Our agile methodology allows us to adapt quickly to changing requirements and deliver value incrementally, giving our clients visibility and control at every stage of development.
+                <Typography paragraph>
+                  Our development process is transparent, agile, and focused on continuous improvement. We don't just build websites and applications – we build partnerships.
                 </Typography>
-              </Paper>
+              </Box>
             </Grid>
           </Grid>
           
           <Box sx={{ mt: 8 }}>
-            <Typography variant="h4" align="center" gutterBottom>
-              Our History
-            </Typography>
-            <Typography variant="body1" paragraph>
-              Founded in 2020, ESnapup began with a simple idea: to make high-quality software development accessible to businesses of all sizes. What started as a small team of passionate developers has grown into a full-service development agency serving clients across industries.
-            </Typography>
-            <Typography variant="body1" paragraph>
-              Throughout our journey, we've remained committed to our core values while continuously adapting to the ever-changing technology landscape. Our experience has taught us that successful software is not just about code—it's about understanding people, processes, and business goals.
-            </Typography>
-          </Box>
-
-          <Box sx={{ mt: 8, mb: 4 }}>
-            <Typography variant="h4" component="h2" gutterBottom sx={{ textAlign: 'center' }}>
-              Certifications & Credentials
-            </Typography>
-            <Typography variant="body1" paragraph sx={{ textAlign: 'center', mb: 4 }}>
-              Our team maintains industry-recognized certifications that validate our expertise and commitment to quality.
+            <Typography 
+              variant="h2" 
+              sx={{ 
+                fontSize: { xs: '1.75rem', md: '2.25rem' },
+                fontWeight: 600,
+                mb: 4,
+                textAlign: 'center'
+              }}
+            >
+              Our Services
             </Typography>
             
-            <Box sx={{ 
-              display: 'flex', 
-              flexWrap: 'wrap',
-              justifyContent: 'center',
-              gap: 3,
-              my: 4 
-            }}>
-              {/* Card section is intentionally empty now, ready for future certifications */}
-            </Box>
+            <Grid container spacing={4}>
+              <Grid item xs={12} md={4}>
+                <Box sx={{ p: 3, height: '100%', border: '1px solid #e0e0e0', borderRadius: 2 }}>
+                  <Typography 
+                    variant="h3" 
+                    sx={{ 
+                      fontSize: { xs: '1.5rem', md: '1.75rem' },
+                      fontWeight: 600,
+                      mb: 2
+                    }}
+                  >
+                    Web Development
+                  </Typography>
+                  <Typography paragraph>
+                    From responsive websites to complex web applications, we build solutions that look great and perform even better across all devices.
+                  </Typography>
+                </Box>
+              </Grid>
+              
+              <Grid item xs={12} md={4}>
+                <Box sx={{ p: 3, height: '100%', border: '1px solid #e0e0e0', borderRadius: 2 }}>
+                  <Typography 
+                    variant="h3" 
+                    sx={{ 
+                      fontSize: { xs: '1.5rem', md: '1.75rem' },
+                      fontWeight: 600,
+                      mb: 2
+                    }}
+                  >
+                    Mobile Apps
+                  </Typography>
+                  <Typography paragraph>
+                    We create intuitive, feature-rich mobile applications for iOS and Android that help businesses engage with their customers on the go.
+                  </Typography>
+                </Box>
+              </Grid>
+              
+              <Grid item xs={12} md={4}>
+                <Box sx={{ p: 3, height: '100%', border: '1px solid #e0e0e0', borderRadius: 2 }}>
+                  <Typography 
+                    variant="h3" 
+                    sx={{ 
+                      fontSize: { xs: '1.5rem', md: '1.75rem' },
+                      fontWeight: 600,
+                      mb: 2
+                    }}
+                  >
+                    Digital Strategy
+                  </Typography>
+                  <Typography paragraph>
+                    We help businesses develop comprehensive digital strategies that align technology investments with business goals for maximum ROI.
+                  </Typography>
+                </Box>
+              </Grid>
+            </Grid>
             
-            <Box sx={{ textAlign: 'center', mt: 3 }}>
+            <Box sx={{ mt: 4, textAlign: 'center' }}>
               <Button 
+                component={Link} 
+                to="/services" 
                 variant="contained" 
-                color="primary"
+                color="primary" 
                 endIcon={<ArrowForwardIcon />}
-                href="https://www.credly.com/users/auguste-dubuisson"
-                target="_blank"
-                rel="noopener noreferrer"
+                sx={{ mt: 2 }}
               >
-                View Our Certifications on Credly
+                View All Services
               </Button>
             </Box>
           </Box>
-        </Container>
-      </Box>
+        </Box>
+      </Container>
     </>
   );
 };

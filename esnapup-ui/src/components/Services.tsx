@@ -177,7 +177,7 @@ const Services = () => {
       
       <Container maxWidth="lg" sx={{ py: 6 }}>
         <Typography variant="h2" component="h1" gutterBottom align="center">
-          My Services
+          Our Services
         </Typography>
         
         <Typography variant="h5" color="textSecondary" paragraph align="center" sx={{ mb: 6 }}>

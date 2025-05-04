@@ -109,7 +109,11 @@ const Header: React.FC = () => {
                         color: 'inherit' 
                       }}
                     >
-                      <ListItemText primary={page.title} />
+                      {page.title === 'Services' ? (
+                        <ListItemText primary="Our Services" />
+                      ) : (
+                        <ListItemText primary={page.title} />
+                      )}
                     </ListItem>
                   ))}
                 </List>
@@ -146,7 +150,7 @@ const Header: React.FC = () => {
                 to={page.path}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page.title}
+                {page.title === 'Services' ? 'Our Services' : page.title}
               </Button>
             ))}
           </Box>
