@@ -1,0 +1,8 @@
+<!-- filepath: /Users/augustedubuisson/Library/CloudStorage/OneDrive-Personal/ESnapup/esnapup-ui/public/favicon.svg -->
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" rx="100" fill="#4F46E5"/>
+  <path d="M140 160H372C381.941 160 390 168.059 390 178V184C390 193.941 381.941 202 372 202H140C130.059 202 122 193.941 122 184V178C122 168.059 130.059 160 140 160Z" fill="white"/>
+  <path d="M140 235H372C381.941 235 390 243.059 390 253V259C390 268.941 381.941 277 372 277H140C130.059 277 122 268.941 122 259V253C122 243.059 130.059 235 140 235Z" fill="white"/>
+  <path d="M140 310H282C291.941 310 300 318.059 300 328V334C300 343.941 291.941 352 282 352H140C130.059 352 122 343.941 122 334V328C122 318.059 130.059 310 140 310Z" fill="white"/>
+  <circle cx="375" cy="331" r="41" fill="#10B981"/>
+</svg>
