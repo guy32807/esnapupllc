@@ -3,37 +3,59 @@
   
   <url>
     <loc>https://www.esnapup.com/</loc>
-    <lastmod>2025-05-04T12:00:00.000Z</lastmod>
+    <lastmod>2025-05-05T12:00:00.000Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
   <url>
     <loc>https://www.esnapup.com/about</loc>
-    <lastmod>2025-05-04T12:00:00.000Z</lastmod>
+    <lastmod>2025-05-05T12:00:00.000Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://www.esnapup.com/services</loc>
-    <lastmod>2025-05-04T12:00:00.000Z</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2025-05-05T12:00:00.000Z</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
     <loc>https://www.esnapup.com/portfolio</loc>
-    <lastmod>2025-05-04T12:00:00.000Z</lastmod>
+    <lastmod>2025-05-05T12:00:00.000Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
     <loc>https://www.esnapup.com/contact</loc>
-    <lastmod>2025-05-04T12:00:00.000Z</lastmod>
+    <lastmod>2025-05-05T12:00:00.000Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  
+  <!-- Add individual portfolio project pages -->
+  <url>
+    <loc>https://www.esnapup.com/portfolio/euro-road-trips</loc>
+    <lastmod>2025-05-05T12:00:00.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.esnapup.com/portfolio/careassist-pro</loc>
+    <lastmod>2025-05-05T12:00:00.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.esnapup.com/portfolio/emailpro-advisor</loc>
+    <lastmod>2025-05-05T12:00:00.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   
 </urlset>
