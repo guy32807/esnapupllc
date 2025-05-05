@@ -17,7 +17,7 @@ const getBasename = () => {
   
   // If running on esnapup.com domain, don't use a basename
   if (hostname === 'esnapup.com' || hostname === 'www.esnapup.com') {
-    return '';
+    return '';  // Empty basename for custom domain
   }
   
   // If running on GitHub Pages, use the repo name as basename
@@ -26,7 +26,7 @@ const getBasename = () => {
   }
   
   // For local development
-  return '/esnapupllc';
+  return '';  // Changed from '/esnapupllc' to ''
 };
 
 function App() {

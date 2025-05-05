@@ -149,6 +149,16 @@
       "categories": ["web", "healthcare", "business"],
       "liveUrl": "https://guy32807.github.io/careassist-pro/",
       "githubUrl": "https://github.com/guy32807/careassist-pro"
+    },
+    {
+      "id": "emailpro-advisor",
+      "title": "EmailPro Advisor",
+      "description": "An intelligent email management tool that helps professionals optimize their email communication, featuring AI-powered response suggestions, email analytics, template management, and productivity metrics.",
+      "image": "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "technologies": ["React", "JavaScript", "Material UI", "AI Integration", "Email APIs", "Analytics Dashboard", "Template System"],
+      "categories": ["web", "productivity", "business"],
+      "liveUrl": "https://guy32807.github.io/emailpro-advisor/",
+      "githubUrl": "https://github.com/guy32807/emailpro-advisor"
     }
   ]
 }
