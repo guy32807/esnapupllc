@@ -142,6 +142,48 @@ const specializations: Specialization[] = [
       'Caching: Redis, Memcached',
       'ORM: Sequelize, Mongoose, SQLAlchemy, Django ORM, Entity Framework'
     ]
+  },
+  {
+    id: 'ai-integration',
+    title: 'AI & Generative AI',
+    description: 'Integration of cutting-edge AI technologies to create intelligent applications that transform business processes, enhance customer experiences, and unlock new possibilities through machine learning and natural language processing.',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    benefits: [
+      'Automate routine tasks and workflows',
+      'Extract insights from unstructured data',
+      'Create personalized user experiences',
+      'Enhance decision-making with AI-powered analytics',
+      'Develop intelligent assistants and chatbots'
+    ],
+    technologies: [
+      'Large Language Models: OpenAI GPT-4, Anthropic Claude, Llama',
+      'Frameworks: LangChain, LlamaIndex, Semantic Kernel',
+      'Retrieval Augmented Generation (RAG) Architecture',
+      'Vector Databases: Pinecone, Weaviate, Chroma',
+      'AI/ML: TensorFlow, PyTorch, Hugging Face Transformers',
+      'Cloud AI Services: Azure OpenAI Service, AWS Bedrock, Google Vertex AI'
+    ]
+  },
+  {
+    id: 'ml-data',
+    title: 'Machine Learning & Data Solutions',
+    description: 'Development of data-driven applications and machine learning solutions that transform raw data into actionable insights and intelligent systems that adapt and improve over time.',
+    image: 'https://images.unsplash.com/photo-1543286386-713bdd548da4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    benefits: [
+      'Turn business data into predictive insights',
+      'Build recommendation systems that drive engagement',
+      'Develop computer vision solutions for image analysis',
+      'Create natural language processing pipelines',
+      'Deploy and monitor ML models in production'
+    ],
+    technologies: [
+      'Data Processing: Python, Pandas, NumPy, Spark',
+      'ML Frameworks: TensorFlow, PyTorch, scikit-learn',
+      'NLP: Hugging Face Transformers, spaCy, NLTK',
+      'Computer Vision: OpenCV, TensorFlow Vision',
+      'MLOps: MLflow, Kubeflow, TensorFlow Serving',
+      'Data Visualization: Tableau, Power BI, D3.js'
+    ]
   }
 ];
 
