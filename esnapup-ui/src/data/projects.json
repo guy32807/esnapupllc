@@ -1,6 +1,16 @@
 {
   "projects": [
     {
+      "id": "card-connect",
+      "title": "Card Connect",
+      "description": "A comprehensive platform that helps businesses streamline payment processing through an intuitive interface, secure transaction management, and real-time analytics powered by AI technologies.",
+      "image": "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "technologies": ["React", "Next.js", "TypeScript", "Material UI", "OpenAI Integration", "RESTful APIs", "Payment Processing", "Analytics Dashboard"],
+      "categories": ["web", "business", "ai"],
+      "liveUrl": "https://guy32807.github.io/card-connect/",
+      "githubUrl": "https://github.com/guy32807/card-connect"
+    },
+    {
       "id": "standards-insight",
       "title": "Standards Insight",
       "description": "A comprehensive platform for professionals to navigate industry standards and compliance requirements, featuring interactive guides, regulatory updates, and customizable dashboards for different sectors.",

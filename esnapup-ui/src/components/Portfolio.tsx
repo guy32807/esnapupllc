@@ -75,10 +75,21 @@ const Portfolio: React.FC = () => {
 
   return (
     <>
-      <SEO 
+      <SEO
         title="Portfolio | ESnapup"
-        description="Browse through our diverse portfolio of web applications, mobile apps, and business solutions showcasing our technical expertise."
-        keywords="software portfolio, web development projects, mobile apps, business solutions"
+        description="Explore our diverse portfolio of web and mobile applications, AI-powered solutions, and digital products designed to drive business success."
+        keywords={[
+          "web development portfolio", 
+          "mobile app projects", 
+          "software solutions",
+          "react applications",
+          "next.js projects", 
+          "LLM applications", 
+          "OpenAI integration",
+          "Claude Anthropic projects",
+          "AI-powered solutions",
+          "full stack development"
+        ]}
         canonicalUrl="https://www.esnapup.com/portfolio"
         schema={portfolioSchema}
       />

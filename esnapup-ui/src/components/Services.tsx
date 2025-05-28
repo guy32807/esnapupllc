@@ -75,7 +75,7 @@ const specializations: Specialization[] = [
       'Clean, maintainable component architecture'
     ],
     technologies: [
-      'React, Redux, Context API',
+      'React, Next.js, Redux, Context API',
       'Angular, RxJS, NgRx',
       'TypeScript, JavaScript (ES6+)',
       'HTML5, CSS3, Sass/SCSS',
@@ -156,8 +156,9 @@ const specializations: Specialization[] = [
       'Develop intelligent assistants and chatbots'
     ],
     technologies: [
-      'Large Language Models: OpenAI GPT-4, Anthropic Claude, Llama',
-      'Frameworks: LangChain, LlamaIndex, Semantic Kernel',
+      'Large Language Models (LLMs): OpenAI GPT-4, Anthropic Claude, Llama',
+      'Frontend Frameworks: Next.js, React, Vue.js',
+      'AI Frameworks: LangChain, LlamaIndex, Semantic Kernel',
       'Retrieval Augmented Generation (RAG) Architecture',
       'Vector Databases: Pinecone, Weaviate, Chroma',
       'AI/ML: TensorFlow, PyTorch, Hugging Face Transformers',
