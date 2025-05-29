@@ -1,0 +1,81 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          cache: 'npm'
+
+      - name: Debug repository structure
+        run: |
+          echo "Current directory: $(pwd)"
+          ls -la
+          echo "Looking for package.json files:"
+          find . -name "package.json" -type f | sort
+
+      # Determine working directory based on actual structure found
+      - name: Set working directory
+        id: set-dir
+        run: |
+          # Check all possible locations
+          for dir in "." "./esnapup" "./esnapup-next" "./esnapup-next/esnapup"; do
+            if [ -f "$dir/package.json" ]; then
+              echo "working_dir=$dir" >> $GITHUB_OUTPUT
+              echo "Using $dir directory"
+              exit 0
+            fi
+          done
+          
+          echo "Cannot find package.json in expected locations"
+          find . -name "package.json" -type f
+          exit 1
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ${{ steps.set-dir.outputs.working_dir }}
+
+      - name: Build with Next.js
+        run: npm run build
+        working-directory: ${{ steps.set-dir.outputs.working_dir }}
+
+      - name: Debug build output
+        run: |
+          echo "Contents of current directory after build:"
+          ls -la
+          
+          echo "Looking for 'out' directory:"
+          find . -type d -name "out"
+          
+          if [ -d "out" ]; then
+            echo "Found out directory in current location"
+            ls -la out/
+          fi
+        working-directory: ${{ steps.set-dir.outputs.working_dir }}
+
+      - name: Create CNAME file
+        run: |
+          mkdir -p out
+          echo "www.esnapup.com" > out/CNAME
+        working-directory: ${{ steps.set-dir.outputs.working_dir }}
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: ${{ steps.set-dir.outputs.working_dir }}/out
+          clean: true
