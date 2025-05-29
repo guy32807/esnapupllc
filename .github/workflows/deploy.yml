@@ -28,12 +28,12 @@ jobs:
           echo "Looking for package.json files:"
           find . -name "package.json" -type f | sort
 
-      # Determine working directory based on actual structure found
+      # Simplified directory detection for new structure
       - name: Set working directory
         id: set-dir
         run: |
-          # Check all possible locations
-          for dir in "." "./esnapup" "./esnapup-next" "./esnapup-next/esnapup"; do
+          # Check primary locations after restructuring
+          for dir in "." "./esnapup"; do
             if [ -f "$dir/package.json" ]; then
               echo "working_dir=$dir" >> $GITHUB_OUTPUT
               echo "Using $dir directory"
